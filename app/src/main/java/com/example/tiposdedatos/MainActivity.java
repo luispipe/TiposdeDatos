@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     String textoBtnValue;
+    int numero1,numero2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,17 +43,22 @@ public class MainActivity extends AppCompatActivity {
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                numero1= Integer.parseInt(valueOne.getText().toString());
+                numero2= Integer.parseInt(valueTwo.getText().toString());
+
                 if (tvValue.getText().toString().equals("+")){
                     //Casteo --> cambiar de un tipo de dato a otro
-                    int numero1= Integer.parseInt(valueOne.getText().toString());
-                    int numero2= Integer.parseInt(valueTwo.getText().toString());
                     tvResult.setText(suma(numero1,numero2)+""); ;
                 }else if (tvValue.getText().toString().equals("-")){
-
+                    tvResult.setText(resta(numero1,numero2)+""); ;
                 } else if (tvValue.getText().toString().equals("*")) {
-
+                    tvResult.setText(multiplication(numero1,numero2)+""); ;
                 } else if (tvValue.getText().toString().equals("/")) {
-
+                        if (numero2==0){
+                            Toast.makeText(getApplicationContext(),"No se puede dividir entre 0",Toast.LENGTH_LONG).show();
+                        }else {
+                            tvResult.setText(division(numero1,numero2)+""); ;
+                        }
                 }else {
                     Toast.makeText(getApplicationContext(),"Ingrese una operación matemática",Toast.LENGTH_LONG).show();
                 }
@@ -202,6 +208,19 @@ public class MainActivity extends AppCompatActivity {
     // (Parametros)
     public int suma(int numberOne, int numberTwo){
         return numberOne+numberTwo;
+    }
+
+    public int resta (int numberOne, int numberTwo){
+        return numberOne-numberTwo;
+    }
+
+    public int multiplication(int numberOne, int numberTwo){
+        return numberOne*numberTwo;
+    }
+
+    public int division(int numberOne, int numberTwo){
+
+        return numberOne/numberTwo;
     }
 
 
