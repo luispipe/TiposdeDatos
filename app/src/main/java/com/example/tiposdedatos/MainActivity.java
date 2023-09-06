@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     String textoBtnValue;
@@ -34,12 +36,37 @@ public class MainActivity extends AppCompatActivity {
         Button btnNine= findViewById(R.id.buttonNine);
         Button btnStart= findViewById(R.id.buttonStart);
 
+        EditText valueOne= findViewById(R.id.etValueOne);
+        EditText valueTwo= findViewById(R.id.etValueTwo);
+
+        btnStart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (tvValue.getText().toString().equals("+")){
+                    //Casteo --> cambiar de un tipo de dato a otro
+                    int numero1= Integer.parseInt(valueOne.getText().toString());
+                    int numero2= Integer.parseInt(valueTwo.getText().toString());
+                    suma(numero1,numero2);
+                }else if (tvValue.getText().toString().equals("-")){
+
+                } else if (tvValue.getText().toString().equals("*")) {
+
+                } else if (tvValue.getText().toString().equals("/")) {
+
+                }else {
+                    Toast.makeText(getApplicationContext(),"Ingrese una operación matemática",Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
 
         btnZero.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //toString convierte cualquier valor en String
                 textoBtnValue= tvValue.getText().toString();
+
+                // la suma de textos es concatenar y se realiza con el simbolo +
                 tvValue.setText(textoBtnValue+"0");
             }
         });
