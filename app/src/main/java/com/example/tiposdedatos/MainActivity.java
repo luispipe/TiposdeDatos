@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
                     //Casteo --> cambiar de un tipo de dato a otro
                     int numero1= Integer.parseInt(valueOne.getText().toString());
                     int numero2= Integer.parseInt(valueTwo.getText().toString());
-                    suma(numero1,numero2);
+                    tvResult.setText(suma(numero1,numero2)+""); ;
                 }else if (tvValue.getText().toString().equals("-")){
 
                 } else if (tvValue.getText().toString().equals("*")) {
